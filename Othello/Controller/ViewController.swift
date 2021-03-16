@@ -33,8 +33,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func restartGame(_ sender: UIButton) {
-
-        
+        othelloData.startOver()
+        restart()
+        whitePointsCounter.text = "WHITE: 0"
+        blackPointsCounter.text = "BLACK: 0"
+        pointsPlusCounter.text = "POINTS ADDED"
+        whiteTilesLabel.text = "WHITE TILES LEFT: 30"
+        blackTilesLabel.text = "BLACK TILES LEFT: 30"
     }
     
     
@@ -137,6 +142,23 @@ class ViewController: UIViewController {
             button.tintColor = color
         }
     }
-
+    func restart() {
+        for i in 0..<newBoard.count {
+            if newBoard[i] == 0 {
+                color = #colorLiteral(red: 0.1568627451, green: 0.5663939714, blue: 0, alpha: 1)
+            }
+            if newBoard[i] == 1 {
+                color = UIColor.white
+            }
+            if newBoard[i] == 2 {
+                color = UIColor.black
+            }
+            if newBoard[i] == 4 {
+                color = UIColor.gray
+            }
+            let button = view.viewWithTag(i + 1) as! UIButton
+            button.tintColor = color
+        }
+    }
 
 }

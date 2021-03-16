@@ -11,6 +11,7 @@ struct OthelloData {
     var turn = true
     var currentTile = Int()
     var numBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let resetBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     let rightTilesIgnore = [7, 15, 23, 31, 39, 47, 55, 63]
     let leftTilesIgnore = [0, 8, 16, 24, 32, 40, 48, 56]
@@ -59,7 +60,14 @@ struct OthelloData {
     }
     
     
-    
+    mutating func startOver() {
+        numBoard = resetBoard
+        turn = true
+        pointsWhite = 2
+        pointsBlack = 2
+        whiteTilesLeft = 30
+        blackTilesLeft = 30
+    }
     
     mutating func flipTile(tag: Int) {
         if turn == true {
